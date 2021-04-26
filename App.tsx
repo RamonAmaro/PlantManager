@@ -1,19 +1,19 @@
+import {
+  Jost_400Regular,
+  Jost_600SemiBold,
+  useFonts,
+} from "@expo-google-fonts/jost";
+import AppLoading from "expo-app-loading";
 import React from "react";
-import { SafeAreaView, StyleSheet, Text } from "react-native";
+import Routes from "./src/routes";
 
 export default function App() {
-  return (
-    <SafeAreaView style={styles.container}>
-      <Text> Hello </Text>
-      <Text> Nlw#5 </Text>
-    </SafeAreaView>
-  );
-}
+  const [fontsLoaded] = useFonts({
+    Jost_400Regular,
+    Jost_600SemiBold,
+  });
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-  },
-});
+  if (!fontsLoaded) return <AppLoading />;
+
+  return <Routes />;
+}
